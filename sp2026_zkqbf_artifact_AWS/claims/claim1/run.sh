@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+    echo "Usage: $0 <path-to-zkqbf-suite>"
+    echo
+    echo "Arguments:"
+    echo "  <path-to-zkqbf-suite>   Directory containing zkqbf-suite"
+    echo "  -h, --help              Show this help message and exit"
+}
+
+# Ensure exactly one argument is passed
+if [ "$#" -ne 1 ]; then
+    usage
+    exit 1
+fi
+
+# Handle help flag
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    usage
+    exit 0
+fi
+
+ZKQBF_DIR="$1"
+
+# Check that the directory exists
+if [ ! -d "$ZKQBF_DIR" ]; then
+    echo "Error: Directory '$ZKQBF_DIR' does not exist."
+    exit 1
+fi
+
+echo "Using zkqbf-suite directory: $ZKQBF_DIR"
+
+# Navigate to zkqres and run experiment
+ORIG_DIR=$(pwd)
+BASE=~/libs
+BIN=$BASE/bin
+cd "$ZKQBF_DIR/src/zkqres/"
+sudo ./run_everything.sh "$ZKQBF_DIR/benchmark" . "$BIN" "$BIN" 8000 127.0.0.1
+echo "Experiment completed. Results are in $ORIG_DIR/benchmark/<file>_renamed_prover.results and $ORIG_DIR/benchmark/<file>_renamed_verifier.results"
+# --------------------------------
