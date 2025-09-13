@@ -34,3 +34,12 @@ EOF
 done
 
 echo "🎉 Done."
+
+if [ ! -d ".venv" ]; then
+  echo "📦 Creating virtual environment..."
+  python3 -m venv .venv
+else
+  echo "✅ .venv already exists, skipping creation."
+fi
+source .venv/bin/activate
+pip install python-sat
