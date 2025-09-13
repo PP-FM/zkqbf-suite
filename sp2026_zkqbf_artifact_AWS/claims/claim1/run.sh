@@ -36,6 +36,6 @@ ORIG_DIR=$(pwd)
 BASE=~/libs
 BIN=$BASE/bin
 cd "$ZKQBF_DIR/src/zkqres/"
-sudo ./run_everything.sh "$ZKQBF_DIR/benchmark" . "$BIN" "$BIN" 8000 127.0.0.1
+sudo ./run_everything.sh "$ORIG_DIR/benchmark" . "$BIN" "$BIN" 8000 127.0.0.1
 echo "Experiment completed. Results are in $ORIG_DIR/benchmark/<file>_renamed_prover.results and $ORIG_DIR/benchmark/<file>_renamed_verifier.results"
 # --------------------------------
