@@ -1,0 +1,8 @@
+@inproceedings{Karthikeyan2026ZKQBF,
+  author    = {Ashwin Karthikeyan and Hengyu Liu and Kuldeep Meel and Ning Luo},
+  title     = {Towards Practical Zero-Knowledge Proof for PSPACE},
+  booktitle = {2026 IEEE Symposium on Security and Privacy (SP)},
+  year      = {2026},
+  publisher = {IEEE Computer Society},
+  note      = {to appear}
+}

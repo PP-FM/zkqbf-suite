@@ -1,0 +1,9 @@
+This package present the following 4 interactive ZK protocols:
+
+1)  ZKQRES
+2)  ZKWS-Herbrand
+3)  ZKWS-Skolem
+4)  ZKQCUBE
+
+These protocols are intended to prove the truth value of QBFs in a privacy 
+preserving manner. 

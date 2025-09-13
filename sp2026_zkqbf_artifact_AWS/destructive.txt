@@ -1,0 +1,3 @@
+While we have included a swap setup, the program is highly memory consuming.
+This can cause the system to crash without proper hardware. Moreover, DepQBF
+can produce traces of ~10GB on some machines within 10 minutes. 
