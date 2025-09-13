@@ -5,10 +5,11 @@
 # with a 30-second timeout. The output is saved to the corresponding .prf file.
 
 if [ $# -ne 6 ]; then
-  echo "Usage: $0 <path_to_benchmarks_dir> <zkqbf_dir> <path_to_depqbf> <path_to_qrpcheck> <port_number> <IP_address>"
+  echo "Usage: $0 <path_to_benchmarks_dir> <zkqres_dir> <path_to_depqbf> <path_to_qrpcheck> <port_number> <IP_address>"
   echo " - Note: We run ./depqbf with --trace --dep-man=simple. This is the way qbfcert calls depqbf (v1)."
   echo "         If you are using a later version of depqbf, please consult depqbf's documentation"
   echo "         for the correct command line options, and change this script accordingly."
+  echo " - <path_to_benchmarks_dir> : is the path to the benchmarks directory with subdirectories containing only one .qdimacs files."
   echo " - <port_number> and <IP_address> are for zkQRPcheck."
   exit 1
 fi
