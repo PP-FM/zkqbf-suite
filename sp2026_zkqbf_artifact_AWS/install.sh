@@ -172,6 +172,13 @@ pip3 install -r "$BASE/requirements.txt" 2>/dev/null || true
       make -j
       cp caqe bcaqe certcheck "$BIN/" 2>/dev/null || true
 
+      # ========== Install PySAT ==========
+      echo "[*] Installing PySAT..."
+      cd "$SRC"
+      git clone https://github.com/pysathq/pysat.git || true
+      cd pysat
+      python setup.py install 2>/dev/null || true
+
 # ------------------------------------------------------
 
 # ========== Final Env Setup ==========
