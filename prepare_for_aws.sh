@@ -11,9 +11,9 @@ while IFS= read -r -d '' dir; do
 
   if [[ -f "$cmake_file" ]]; then
     cp -f -- "$cmake_file" "$cmake_file.bak-$timestamp"
-    echo "🔧 Backed up $cmake_file -> $cmake_file.bak-$timestamp"
+    echo "Backed up $cmake_file -> $cmake_file.bak-$timestamp"
   else
-    echo "🆕 Creating $cmake_file"
+    echo "Creating $cmake_file"
   fi
 
   # Write the required contents (quoted heredoc prevents $ expansion)
@@ -30,16 +30,16 @@ add_executable(test main.cpp polynomial.cpp clause.cpp clauseRAM.cpp)
 target_link_libraries(test PUBLIC emp-tool emp-zk gmp ssl crypto ntl gmp)
 EOF
 
-  echo "✅ Wrote $cmake_file"
+  echo "Wrote $cmake_file"
 done
 
-echo "🎉 Done."
+echo "Done."
 
 if [ ! -d ".venv" ]; then
-  echo "📦 Creating virtual environment..."
+  echo "Creating virtual environment..."
   python3 -m venv .venv
 else
-  echo "✅ .venv already exists, skipping creation."
+  echo ".venv already exists, skipping creation."
 fi
 source .venv/bin/activate
 pip install python-sat
