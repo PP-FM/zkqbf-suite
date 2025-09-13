@@ -8,32 +8,36 @@ SIZE_GB=1
 
 if swapon --show | grep -q "$SWAPFILE"; then
   echo "Swap already enabled at $SWAPFILE"
-  exit 0
+  goto_after_swap=1
+else
+  goto_after_swap=0
 fi
 
-echo "Creating swap directory at $SWAPDIR..."
-sudo mkdir -p "$SWAPDIR"
-sudo chmod 700 "$SWAPDIR"
+if [ $goto_after_swap -eq 0 ]; then
+  echo "Creating swap directory at $SWAPDIR..."
+  sudo mkdir -p "$SWAPDIR"
+  sudo chmod 700 "$SWAPDIR"
 
-echo "Allocating ${SIZE_GB}G swap file..."
-sudo fallocate -l ${SIZE_GB}G "$SWAPFILE" || sudo dd if=/dev/zero of="$SWAPFILE" bs=1G count=$SIZE_GB
-sudo chmod 600 "$SWAPFILE"
+  echo "Allocating ${SIZE_GB}G swap file..."
+  sudo fallocate -l ${SIZE_GB}G "$SWAPFILE" || sudo dd if=/dev/zero of="$SWAPFILE" bs=1G count=$SIZE_GB
+  sudo chmod 600 "$SWAPFILE"
 
-sudo mkswap "$SWAPFILE"
-sudo swapon "$SWAPFILE"
+  sudo mkswap "$SWAPFILE"
+  sudo swapon "$SWAPFILE"
 
-if ! grep -q "$SWAPFILE" /etc/fstab; then
-  echo "$SWAPFILE none swap sw 0 0" | sudo tee -a /etc/fstab
+  if ! grep -q "$SWAPFILE" /etc/fstab; then
+    echo "$SWAPFILE none swap sw 0 0" | sudo tee -a /etc/fstab
+  fi
+
+  echo "Setting swappiness to 20..."
+  sudo sysctl vm.swappiness=20
+  echo "vm.swappiness=20" | sudo tee /etc/sysctl.d/99-swappiness.conf
+
+  echo ""
+  echo "Data disk swap setup complete!"
+  swapon --show
+  free -h
 fi
-
-echo "Setting swappiness to 20..."
-sudo sysctl vm.swappiness=20
-echo "vm.swappiness=20" | sudo tee /etc/sysctl.d/99-swappiness.conf
-
-echo ""
-echo "Data disk swap setup complete!"
-swapon --show
-free -h
 
 # ============================================
 
