@@ -5,10 +5,10 @@
 # with a 120-second timeout. The output is saved to the corresponding files.
 
 if [ "$#" -ne 8 ]; then
-    echo "Usage: $0 <input_dir> <zkqbf_dir> <caqe_dir> <abc_dir> <aiger_dir> <picosat_dir> <port_num> <ip_address>"
+    echo "Usage: $0 <input_dir> <zkws-skolem_dir> <caqe_dir> <abc_dir> <aiger_dir> <picosat_dir> <port_num> <ip_address>"
     echo " (1) <input_dir> should be the path to the directory containing the subdirectories."
     echo "     each subdirectory should contain exactly one file with a .qdimacs extension."
-    echo " (2) <zkqbf_dir> should be the path to the zkqbf directory."
+    echo " (2) <zkws-skolem_dir> should be the path to the zkqbf directory."
     echo " (3) <caqe_dir> should be the path to the caqe directory."
     echo " (4) <abc_dir> should be the path to the abc directory."
     echo " (5) <aiger_dir> should be the path to the aiger (toolset: https://github.com/arminbiere/aiger) directory."
