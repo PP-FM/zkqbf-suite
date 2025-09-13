@@ -5,11 +5,11 @@ This repository contains the code and data artifact for the paper
 
 Our protocols implement two distinct approaches for proving knowledge 
 about quantified Boolean formulas (QBFs) in zero-knowledge:
-- **ZKQRES**: a protocol based on validating quantified-resolution (Q-Res) proofs.
+- **ZKQRES**: a protocol based on validating quantified-resolution (Q-Res/Q-Cube-Res) proofs.
 - **ZKWS**: a protocol based on validating winning strategies (Skolem/Herbrand functions).
 
 Both approaches enable efficient zero-knowledge proofs for PSPACE-complete 
-statements once reduced to QBF evaluation.
+statements through the privacy preserving verification of their certificates.
 
 ----------------------------------------------------------------------
 A.1 Description & Requirements
@@ -17,21 +17,23 @@ A.1 Description & Requirements
 - The artifact is implemented using the EMP-toolkit as the backend 
   for interactive zero-knowledge proofs, and integrates the open-source 
   ZKUNSAT implementation.
-- QBF solvers employed: DepQBF and QRPcheck (for Q-Res proofs), 
-  and CAQE (for Skolem/Herbrand strategies).
+- QBF solvers employed: DepQBF with QRPcheck (for Q-Res/Q-Cube-Res proofs), 
+  and CAQE-2 (for Skolem/Herbrand functions).
 - Certificates (proofs or strategies) are preprocessed into 
   `.prf.unfold` files which serve as the direct input to our protocols.
-- Benchmarks are taken from the QBFEVAL’07 and QBFEVAL’23 suites, 
+- Benchmarks are taken from the QBFEVAL'07 and QBFEVAL'23 suites, 
   as well as real-world instances from:
   * Partial Equivalence Checking (PEC)
   * Conformant Planning (C-PLAN)
   * Black-Box Checking (BBC)
+  For the purposes of Artifact Evaluation we present select benchmarks
+  from the QBFEVAL'07 
 
 Hardware requirements:
-- The evaluation was originally run on AWS i4i.16xlarge instances 
-  (64 vCPUs, 512 GB RAM, 50 Gbps inter-instance bandwidth). 
+- The evaluation of the protocol was originally run on AWS i4i.16xlarge 
+  instances (64 vCPUs, 512 GB RAM, 50 Gbps inter-instance bandwidth). 
 
-- High-memory machines are recommended for large benchmarks.
+- High-memory (> 64 GiB) machines are recommended for large benchmarks. 
 
 ----------------------------------------------------------------------
 A.2 Instructions

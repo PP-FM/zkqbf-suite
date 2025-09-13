@@ -7,15 +7,15 @@ SWAPFILE="$SWAPDIR/swapfile"
 SIZE_GB=1
 
 if swapon --show | grep -q "$SWAPFILE"; then
-  echo "✅ Swap already enabled at $SWAPFILE"
+  echo "Swap already enabled at $SWAPFILE"
   exit 0
 fi
 
-echo "📁 Creating swap directory at $SWAPDIR..."
+echo "Creating swap directory at $SWAPDIR..."
 sudo mkdir -p "$SWAPDIR"
 sudo chmod 700 "$SWAPDIR"
 
-echo "📦 Allocating ${SIZE_GB}G swap file..."
+echo "Allocating ${SIZE_GB}G swap file..."
 sudo fallocate -l ${SIZE_GB}G "$SWAPFILE" || sudo dd if=/dev/zero of="$SWAPFILE" bs=1G count=$SIZE_GB
 sudo chmod 600 "$SWAPFILE"
 
@@ -26,12 +26,12 @@ if ! grep -q "$SWAPFILE" /etc/fstab; then
   echo "$SWAPFILE none swap sw 0 0" | sudo tee -a /etc/fstab
 fi
 
-echo "💡 Setting swappiness to 20..."
+echo "Setting swappiness to 20..."
 sudo sysctl vm.swappiness=20
 echo "vm.swappiness=20" | sudo tee /etc/sysctl.d/99-swappiness.conf
 
 echo ""
-echo "✅ Data disk swap setup complete!"
+echo "Data disk swap setup complete!"
 swapon --show
 free -h
 
@@ -184,7 +184,7 @@ if ! grep -q "# ZKQBF ENV" "$PROFILE"; then
 fi
 source "$PROFILE"
 
-echo "[✓] Environment setup complete. Tools installed in $BASE/bin"
+echo "[*] Environment setup complete. Tools installed in $BASE/bin"
 ls -lh "$BIN"
 
 # ========== Clone zkqbf-suite ==========
@@ -210,4 +210,4 @@ cmake .
 make
 mkdir -p data
 cd 
-echo "[✓] zkqbf-suite setup complete."
+echo "[*] zkqbf-suite setup complete."
