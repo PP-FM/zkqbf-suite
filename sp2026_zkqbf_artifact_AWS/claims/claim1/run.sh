@@ -35,8 +35,8 @@ echo "Using zkqbf-suite directory: $ZKQBF_DIR"
 ORIG_DIR=$(pwd)
 BASE=~/libs
 BIN=$BASE/bin
-cd "$ZKQBF_DIR/src/zkqres/"
 source "$ZKQBF_DIR/.venv/bin/activate"
+cd "$ZKQBF_DIR/src/zkqres/"
 sudo ./run_everything.sh "$ORIG_DIR/benchmark" . "$BIN" "$BIN" 8000 127.0.0.1
 cp "$ORIG_DIR/benchmark/False"/*/*_renamed_prover_zkqrp.result "$ORIG_DIR/result.txt"
 echo "Experiment completed. Results are in "$ORIG_DIR"/result" 

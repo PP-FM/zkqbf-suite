@@ -10,13 +10,12 @@ INPUT_DIR=./benchmark/benchmarks_herbrand_for_every5s/False
 ZKQBF_DIR="$1"
 PORT=8000
 IP=127.0.0.1
-TEST_BIN="$ZKQBF_DIR/test"
+TEST_BIN="$ZKQBF_DIR/./test"
 TIMEOUT=120  # seconds (kept as a hint; not enforced unless you wrap with 'timeout')
 
 [[ -d "$INPUT_DIR" ]] || { echo "Input dir not found: $INPUT_DIR" >&2; exit 1; }
 [[ -x "$TEST_BIN"  ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
 
-shopt -s nullglob
 for dir in "$INPUT_DIR"/*/; do
   aag="$(find "$dir" -maxdepth 1 -type f -name '*_renamed_min.aag' | head -n 1 || true)"
   if [[ -z "$aag" ]]; then
@@ -45,22 +44,21 @@ for dir in "$INPUT_DIR"/*/; do
     rm -f -- "$prover_out" "$verifier_out"
   fi
 
-#   echo "[DIR ] $(basename "$dir")"
-#   echo "[FILE] $base"
-#   echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkherb=$zkherb  verifier=$verifier_qdimacs"
+  echo "[DIR ] $(basename "$dir")"
+  echo "[FILE] $base"
+  echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkherb=$zkherb  verifier=$verifier_qdimacs"
 
-#   echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkherb_path\" \"${prf_path}.unfold\""
-#   "$TEST_BIN" 1 "$PORT" "$IP" "$verifier_qdimacs_path" "$zkherb_path" "${prf_path}.unfold" >"$prover_out" 2>&1 &
+  echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkherb_path\" \"${prf_path}.unfold\""
+  "$TEST_BIN" 1 "$PORT" "$IP" "$verifier_qdimacs_path" "$zkherb_path" "${prf_path}.unfold" >"$prover_out" 2>&1 &
 
-#   echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP \"$verifier_qdimacs_path\""
-#   "$TEST_BIN" 2 "$PORT" "$IP" "$verifier_qdimacs_path" >"$verifier_out" 2>&1
+  echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP \"$verifier_qdimacs_path\""
+  "$TEST_BIN" 2 "$PORT" "$IP" "$verifier_qdimacs_path" >"$verifier_out" 2>&1
 
-#   echo "[DONE] $(basename "$dir")"
+  echo "[DONE] $(basename "$dir")"
 done
-shopt -u nullglob
 
-# echo "All done."
+echo "All done."
 
-# mkdir -p plots
+mkdir -p plots
 
-# python3 $1/plot_herbrand.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/benchmark/benchmarks_herbrand_for_every5s/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/plots
+python3 $1/plot_herbrand.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/benchmark/benchmarks_herbrand_for_every5s/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/plots
