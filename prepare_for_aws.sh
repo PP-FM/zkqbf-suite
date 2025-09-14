@@ -216,4 +216,4 @@ for dir in $1/*/; do
 done
 EOF
 
-echo "Rewrote zkqcube/$TARGET"
+echo "Rewrote $TARGET"
