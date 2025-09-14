@@ -2,12 +2,12 @@
 set -euo pipefail
 
 if [[ "$#" -ne 1 ]]; then
-  echo "Usage: $0 <zkqbf_dir>" >&2
+  echo "Usage: $0 <zkqbf-suite_dir>" >&2
   exit 1
 fi
 
 INPUT_DIR=./benchmark/benchmarks_herbrand_for_every5s/False
-ZKQBF_DIR="$1"
+ZKQCUBE_DIR="$1/src/zkqcube"
 PORT=8000
 IP=127.0.0.1
 TEST_BIN="$ZKQBF_DIR/test"
@@ -64,4 +64,4 @@ echo "All done."
 
 mkdir -p plots
 
-python3 $1/plot_herbrand.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/benchmark/benchmarks_herbrand_for_every5s/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/plots
+$1/.venv/bin/python3 $ZKQCUBE_DIR/plot_herbrand.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/benchmark/benchmarks_herbrand_for_every5s/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/plots
