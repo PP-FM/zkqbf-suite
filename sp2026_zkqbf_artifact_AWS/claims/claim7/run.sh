@@ -41,7 +41,7 @@ for dir in "$INPUT_DIR"/*/; do
 
   # If both results exist and are non-empty, refresh (consistent with the reference style)
   if [[ -s "$prover_out" && -s "$verifier_out" ]]; then
-    echo "[SKIP] Results exist for $(basename "$dir"); refreshing..."
+    # echo "[SKIP] Results exist for $(basename "$dir"); refreshing..."
     rm -f -- "$prover_out" "$verifier_out"
   fi
 

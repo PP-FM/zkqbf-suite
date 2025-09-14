@@ -19,7 +19,7 @@ PORT=8000
 IP=127.0.0.1
 
 [[ -x "$TEST_BIN" ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
-[[ -d "$BENCH_DIR" ]] || { echo "Benchmark dir not found: $BENCH_DIR" >&2; exit 1; }
+[[ -d "$BENCH_DIR" ]] || { echo "Input dir not found: $BENCH_DIR. Unzipping" >&2; tar -xf "./benchmark/benchmarks_qcube.tar.xz" -C "./benchmark/"; }
 
 shopt -s nullglob
 for dir in "$BENCH_DIR"/*/; do
@@ -37,17 +37,17 @@ for dir in "$BENCH_DIR"/*/; do
   verifier_out="$dir/${stem}_verifier_zkqrp.result"
 
   if [[ -s "$prover_out" && -s "$verifier_out" ]]; then
-    echo "[SKIP] Results exist for $(basename "$dir")"
+    # echo "[SKIP] Results exist for $(basename "$dir")"
     sudo rm -f "$prover_out" "$verifier_out"
   fi
 
   echo "--------------------------------------------------------------------------------"
   echo "[DIR ] $(basename "$dir")"
-  echo "[FILE] $base"
-  echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP $renamed $zkqrp"
+  # echo "[FILE] $base"
+  # echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP $renamed $zkqrp"
   mkdir -p data
   "$TEST_BIN" 1 "$PORT" "$IP" "$renamed" "$zkqrp" >"$prover_out" 2>&1 &
-  echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP"
+  # echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP"
   "$TEST_BIN" 2 "$PORT" "$IP" $renamed >"$verifier_out" 2>&1; 
 
   echo "[DONE] $(basename "$dir")"
