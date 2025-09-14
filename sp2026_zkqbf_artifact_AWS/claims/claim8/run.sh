@@ -11,7 +11,7 @@ ZKQBF_DIR="$1/src/zkws-skolem"
 PORT=8000
 IP=127.0.0.1
 TEST_BIN="$ZKQBF_DIR/test"
-[[ -d "$INPUT_DIR" ]] || { echo "Input dir not found: $INPUT_DIR" >&2; exit 1; }
+[[ -d "$INPUT_DIR" ]] || { echo "Input dir not found: $INPUT_DIR. Unzipping" >&2; tar -xf "./benchmark/benchmarks_skolem.tar.xz" -C "./benchmark/"; }
 [[ -x "$TEST_BIN"  ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
 
 shopt -s nullglob
