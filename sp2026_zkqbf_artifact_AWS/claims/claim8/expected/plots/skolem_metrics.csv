@@ -1,0 +1,10 @@
+instance,file,clauses,proof_width,proof_size,formula_size,skolem_function_size,time_s,communication_kb
+eijk.S208.S-d4,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S208.S-d4/eijk.S208.S-d4_renamed_prover.result,4672,124,579328,2411,3,31.5652,178968.134765625
+eijk.S208c.S-d3,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S208c.S-d3/eijk.S208c.S-d3_renamed_prover.result,2070,51,105570,1178,2,11.4264,52868.3408203125
+eijk.S208c.S-d4,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S208c.S-d4/eijk.S208c.S-d4_renamed_prover.result,5216,154,803264,2492,3,54.8083,277423.2626953125
+eijk.S208o.S-d3,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S208o.S-d3/eijk.S208o.S-d3_renamed_prover.result,1823,34,61982,1082,2,7.81222,41082.4736328125
+eijk.S420.S-d4,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S420.S-d4/eijk.S420.S-d4_renamed_prover.result,4795,117,561015,2555,3,29.4202,174990.9814453125
+eijk.S510.S-d3,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S510.S-d3/eijk.S510.S-d3_renamed_prover.result,2524,61,153964,1673,1,11.0383,62283.8017578125
+eijk.S510.S-d4,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/eijk.S510.S-d4/eijk.S510.S-d4_renamed_prover.result,15995,323,5166385,9746,4,218.802,1053469.1767578125
+texas.parsesys^1.E-d3,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/texas.parsesys^1.E-d3/texas.parsesys^1.E-d3_renamed_prover.result,5255,53,278515,3338,2,16.2155,124654.7548828125
+vis.bakery.E-d3,/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True/vis.bakery.E-d3/vis.bakery.E-d3_renamed_prover.result,11291,163,1840433,6917,2,81.9241,462603.9189453125
