@@ -12,7 +12,7 @@ if [[ "$#" -ne 1 ]]; then
   exit 1
 fi
 
-ZKQRES_DIR="$1/src/zkqres"
+ZKQRES_DIR="$1/src/zkqcube"
 BENCH_DIR="${2:-./benchmark/benchmarks_qcube/True}"
 TEST_BIN="$ZKQRES_DIR/test"
 PORT=8000
