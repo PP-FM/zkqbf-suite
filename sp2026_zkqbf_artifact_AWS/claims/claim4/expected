@@ -1,0 +1,57 @@
+---- begin ----
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+
+----set up----
+
+----Negative matrix----
+number of forall variables: 4
+number of existential variables: 416
+number of clauses: 8468
+
+Variable representing true: 3253
+
+/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim4/benchmark/True/eijk.S510.S-d4/eijk.S510.S-d4_renamed.zkskolem
+----Skolem Function----
+number of input variables: 4
+number of output variables: 416
+number of and gates: 426
+
+/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim4/benchmark/True/eijk.S510.S-d4/eijk.S510.S-d4_renamed.prf.unfold
+----input proof----
+number of resolution steps: 6249
+total number of clauses: 15995
+DEGREE for ZKUNSAT: 323
+
+----end set up----
+
+----loading input----
+[======>                                                               ] 9 %
+[==============>                                                       ] 20 %
+[=====================>                                                ] 30 %
+[============================>                                         ] 40 %
+[===================================>                                  ] 50 %
+[==========================================>                           ] 60 %
+[=================================================>                    ] 70 %
+[========================================================>             ] 80 %
+[===============================================================>      ] 90 %
+finish  input!
+[=============================================>                        ] 64 %
+[================================================>                     ] 68 %
+[==================================================>                   ] 72 %
+[=====================================================>                ] 76 %
+[========================================================>             ] 80 %
+[===========================================================>          ] 84 %
+[=============================================================>        ] 88 %
+[================================================================>     ] 92 %
+[===================================================================>  ] 96 %
+a 163.214 r 26.9096 i 14.4642 t 204.588
+skolem function checking time: 10.6026
+communication:1079424506
+----end----
