@@ -47,7 +47,7 @@ pip install pandas
 pip install matplotlib
 
 # ==================== Rewrite run_everything.sh on zkqcube ====================
-TARGET="zkqcube/run_everything.sh"
+TARGET="./zkqcube/run_everything.sh"
 
 cat > "$TARGET" <<"EOF"
 #!/bin/bash
