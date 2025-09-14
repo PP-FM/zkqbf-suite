@@ -13,7 +13,7 @@ IP=127.0.0.1
 TEST_BIN="$ZKQBF_DIR/test"
 TIMEOUT=120  # seconds (kept as a hint; not enforced unless you wrap with 'timeout')
 
-[[ -d "$INPUT_DIR" ]] || { echo "Input dir not found: $INPUT_DIR. Unzipping" >&2; tar -xf "./benchmark/benchmarks_herbrand_for_every5s.tar.xz"; }
+[[ -d "$INPUT_DIR" ]] || { echo "Input dir not found: $INPUT_DIR. Unzipping" >&2; tar -xf "./benchmark/benchmarks_herbrand_for_every5s.tar.xz" -C "./benchmark/; }
 [[ -x "$TEST_BIN"  ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
 
 shopt -s nullglob
