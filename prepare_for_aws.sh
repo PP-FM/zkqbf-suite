@@ -214,3 +214,5 @@ for dir in $1/*/; do
   mv $dir $1/True
 done
 EOF
+
+echo "Rewrote zkqcube/$TARGET"
