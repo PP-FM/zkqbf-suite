@@ -50,6 +50,7 @@ for dir in "$INPUT_DIR"/*/; do
   echo "[FILE] $base"
   echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkskolem=$zkskolem  verifier=$verifier_qdimacs"
 
+  mkdir -p data
   echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkskolem_path\" \"${prf_path}.unfold\""
   "$TEST_BIN" 1 "$PORT" "$IP" "$verifier_qdimacs_path" "$zkskolem_path" "${prf_path}.unfold" >"$prover_out" 2>&1 &
 
