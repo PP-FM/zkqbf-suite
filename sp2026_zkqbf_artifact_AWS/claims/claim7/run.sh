@@ -45,6 +45,7 @@ for dir in "$INPUT_DIR"/*/; do
     rm -f -- "$prover_out" "$verifier_out"
   fi
 
+  echo "--------------------------------------------------------------------------------"
   echo "[DIR ] $(basename "$dir")"
   # echo "[FILE] $base"
   # echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkherb=$zkherb  verifier=$verifier_qdimacs"
