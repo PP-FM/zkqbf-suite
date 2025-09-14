@@ -2,12 +2,12 @@
 set -euo pipefail
 
 if [[ "$#" -ne 1 ]]; then
-  echo "Usage: $0 <zkqbf_dir>" >&2
+  echo "Usage: $0 <zkqbf-suite_dir>" >&2
   exit 1
 fi
 
 INPUT_DIR=./benchmark/benchmarks_skolem/True
-ZKQBF_DIR="$1"
+ZKQBF_DIR="$1/src/zkws-skolem"
 PORT=8000
 IP=127.0.0.1
 TEST_BIN="$ZKQBF_DIR/test"
@@ -47,14 +47,14 @@ for dir in "$INPUT_DIR"/*/; do
 
   echo "--------------------------------------------------------------------------------"
   echo "[DIR ] $(basename "$dir")"
-  echo "[FILE] $base"
-  echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkskolem=$zkskolem  verifier=$verifier_qdimacs"
+  # echo "[FILE] $base"
+  # echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkskolem=$zkskolem  verifier=$verifier_qdimacs"
 
   mkdir -p data
-  echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkskolem_path\" \"${prf_path}.unfold\""
+  # echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkskolem_path\" \"${prf_path}.unfold\""
   "$TEST_BIN" 1 "$PORT" "$IP" "$verifier_qdimacs_path" "$zkskolem_path" "${prf_path}.unfold" >"$prover_out" 2>&1 &
 
-  echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP \"$verifier_qdimacs_path\""
+  # echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP \"$verifier_qdimacs_path\""
   "$TEST_BIN" 2 "$PORT" "$IP" "$verifier_qdimacs_path" >"$verifier_out" 2>&1
 
   echo "[DONE] $(basename "$dir")"
@@ -65,4 +65,4 @@ echo "All done."
 
 mkdir -p plots
 
-python3 $1/plot_skolem.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/plots
+$1/.venv/bin/python3 $ZKQBF_DIR/plot_skolem.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/plots

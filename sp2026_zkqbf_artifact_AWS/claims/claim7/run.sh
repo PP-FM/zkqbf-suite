@@ -7,7 +7,7 @@ if [[ "$#" -ne 1 ]]; then
 fi
 
 INPUT_DIR=./benchmark/benchmarks_herbrand_for_every5s/False
-ZKQCUBE_DIR="$1/src/zkqcube"
+ZKQCUBE_DIR="$1/src/zkws-herbrand"
 PORT=8000
 IP=127.0.0.1
 TEST_BIN="$ZKQBF_DIR/test"
@@ -46,14 +46,14 @@ for dir in "$INPUT_DIR"/*/; do
   fi
 
   echo "[DIR ] $(basename "$dir")"
-  echo "[FILE] $base"
-  echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkherb=$zkherb  verifier=$verifier_qdimacs"
+  # echo "[FILE] $base"
+  # echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkherb=$zkherb  verifier=$verifier_qdimacs"
 
   mkdir -p data
-  echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkherb_path\" \"${prf_path}.unfold\""
+  # echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkherb_path\" \"${prf_path}.unfold\""
   "$TEST_BIN" 1 "$PORT" "$IP" "$verifier_qdimacs_path" "$zkherb_path" "${prf_path}.unfold" >"$prover_out" 2>&1 &
 
-  echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP \"$verifier_qdimacs_path\""
+  # echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP \"$verifier_qdimacs_path\""
   "$TEST_BIN" 2 "$PORT" "$IP" "$verifier_qdimacs_path" >"$verifier_out" 2>&1
 
   echo "[DONE] $(basename "$dir")"
