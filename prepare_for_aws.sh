@@ -35,7 +35,6 @@ done
 
 echo "Done."
 
-cd src/zkqcube
 if [ ! -d ".venv" ]; then
   echo "Creating virtual environment for qcube..."
   python3 -m venv .venv
@@ -44,6 +43,8 @@ else
 fi
 source .venv/bin/activate
 pip install python-sat
+pip install pandas
+pip install matplotlib
 
 # ==================== Rewrite run_everything.sh on zkqcube ====================
 TARGET="./run_everything.sh"
@@ -135,7 +136,7 @@ for dir in $1/*/; do
       echo "---------------------------------------------------------------------------------------------"
       echo "Running ExtendQRPProof on $trimmed"
       echo "---------------------------------------------------------------------------------------------"
-      timeout 600 $2/.venv/bin/python3 $2/prover_backend/ExtendQRPProof.py $trimmed $renamed > $zkqrp
+      timeout 600 $2/../../.venv/bin/python3 $2/prover_backend/ExtendQRPProof.py $trimmed $renamed > $zkqrp
       #rm -f $trimmed
       echo "---------------------------------------------------------------------------------------------"
       echo "Running zkQRPcheck on $zkqrp as prover in the background"
@@ -198,7 +199,7 @@ for dir in $1/*/; do
   echo "---------------------------------------------------------------------------------------------"
   echo "Running ExtendQRPProof on $trimmed"
   echo "---------------------------------------------------------------------------------------------"
-  timeout 600 $2/.venv/bin/python3 $2/prover_backend/ExtendQRPProof.py $trimmed $renamed > $zkqrp
+  timeout 600 $2/../../.venv/bin/python3 $2/prover_backend/ExtendQRPProof.py $trimmed $renamed > $zkqrp
   #rm -f $trimmed
   echo "---------------------------------------------------------------------------------------------"
   echo "Running zkQRPcheck on $zkqrp as prover in the background"
