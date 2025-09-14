@@ -1,14 +1,15 @@
 set -euo pipefail
 
-ZKQRES_DIR="${1:?Usage: $0 <zkqres_dir> [BENCH_DIR]}"
+if [[ "$#" -ne 1 ]]; then
+  echo "Usage: $0 <zkqbf-suite_dir>" >&2
+  exit 1
+fi
+
+ZKQRES_DIR="$1/src/zkqres"
 BENCH_DIR="${2:-./benchmark/benchmarks_qrp_every5ish/False}"
 TEST_BIN="$ZKQRES_DIR/test"
 PORT=8000
 IP=127.0.0.1
-TIMEOUT=900  # seconds
-
-[[ -x "$TEST_BIN" ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
-[[ -d "$BENCH_DIR" ]] || { echo "Benchmark dir not found: $BENCH_DIR" >&2; exit 1; }
 
 shopt -s nullglob
 for dir in "$BENCH_DIR"/*/; do
@@ -25,16 +26,17 @@ for dir in "$BENCH_DIR"/*/; do
   verifier_out="$dir/${stem}_verifier_zkqrp.result"
 
   if [[ -s "$prover_out" && -s "$verifier_out" ]]; then
-    echo "[SKIP] Results exist for $(basename "$dir")"
+    # echo "[SKIP] Results exist for $(basename "$dir")"
     sudo rm -f "$prover_out" "$verifier_out"
   fi
 
+  mkdir -p data
   echo "--------------------------------------------------------------------------------"
   echo "[DIR ] $(basename "$dir")"
-  echo "[FILE] $base"
-  echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP $zkqrp"
+  # echo "[FILE] $base"
+  # echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP $zkqrp"
   "$TEST_BIN" 1 "$PORT" "$IP" "$zkqrp" >"$prover_out" 2>&1 &
-  echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP"
+  # echo "[CMD ] verifier: $TEST_BIN 2 $PORT $IP"
   "$TEST_BIN" 2 "$PORT" "$IP" >"$verifier_out" 2>&1; 
 
   echo "[DONE] $(basename "$dir")"
@@ -45,4 +47,4 @@ echo "All done."
 
 mkdir -p plots
 
-python3 $1/plot_qres.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim5/benchmark/benchmarks_qrp_every5ish/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim5/plots
+$1/.venv/bin/python3 $ZKQRES_DIR/plot_qres.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim5/benchmark/benchmarks_qrp_every5ish/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim5/plots
