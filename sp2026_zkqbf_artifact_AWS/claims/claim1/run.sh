@@ -40,4 +40,8 @@ cd "$ZKQBF_DIR/src/zkqres/"
 sudo ./run_everything.sh "$ORIG_DIR/benchmark" . "$BIN" "$BIN" 8000 127.0.0.1
 cp "$ORIG_DIR/benchmark/False"/*/*_renamed_prover_zkqrp.result "$ORIG_DIR/result.txt"
 echo "Experiment completed. Results are in "$ORIG_DIR"/result" 
+sudo mv "$ORIG_DIR/benchmark/False/*" "$ORIG_DIR/benchmark"
+sudo rm -rf "$ORIG_DIR/benchmark/True"
+sudo rm -rf "$ORIG_DIR/benchmark/False"
+rm "$ORIG_DIR/*/*_renamed*"
 # --------------------------------
