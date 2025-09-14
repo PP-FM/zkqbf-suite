@@ -7,7 +7,7 @@ if [[ "$#" -ne 1 ]]; then
 fi
 
 INPUT_DIR=./benchmark/benchmarks_herbrand_for_every5s/False
-ZKQCUBE_DIR="$1/src/zkws-herbrand"
+ZKQBF_DIR="$1/src/zkws-herbrand"
 PORT=8000
 IP=127.0.0.1
 TEST_BIN="$ZKQBF_DIR/test"
@@ -64,4 +64,4 @@ echo "All done."
 
 mkdir -p plots
 
-$1/.venv/bin/python3 $ZKQCUBE_DIR/plot_herbrand.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/benchmark/benchmarks_herbrand_for_every5s/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/plots
+$1/.venv/bin/python3 $ZKQBF_DIR/plot_herbrand.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/benchmark/benchmarks_herbrand_for_every5s/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim7/plots
