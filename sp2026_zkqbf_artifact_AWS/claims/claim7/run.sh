@@ -10,12 +10,13 @@ INPUT_DIR=./benchmark/benchmarks_herbrand_for_every5s/False
 ZKQBF_DIR="$1"
 PORT=8000
 IP=127.0.0.1
-TEST_BIN="$ZKQBF_DIR/./test"
+TEST_BIN="$ZKQBF_DIR/test"
 TIMEOUT=120  # seconds (kept as a hint; not enforced unless you wrap with 'timeout')
 
 [[ -d "$INPUT_DIR" ]] || { echo "Input dir not found: $INPUT_DIR" >&2; exit 1; }
 [[ -x "$TEST_BIN"  ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
 
+shopt -s nullglob
 for dir in "$INPUT_DIR"/*/; do
   aag="$(find "$dir" -maxdepth 1 -type f -name '*_renamed_min.aag' | head -n 1 || true)"
   if [[ -z "$aag" ]]; then
@@ -48,6 +49,7 @@ for dir in "$INPUT_DIR"/*/; do
   echo "[FILE] $base"
   echo "[DERI] renamed_qdimacs=$renamed_qdimacs  prf=$prf  zkherb=$zkherb  verifier=$verifier_qdimacs"
 
+  mkdir -p data
   echo "[CMD ] prover: $TEST_BIN 1 $PORT $IP \"$verifier_qdimacs_path\" \"$zkherb_path\" \"${prf_path}.unfold\""
   "$TEST_BIN" 1 "$PORT" "$IP" "$verifier_qdimacs_path" "$zkherb_path" "${prf_path}.unfold" >"$prover_out" 2>&1 &
 
@@ -56,6 +58,7 @@ for dir in "$INPUT_DIR"/*/; do
 
   echo "[DONE] $(basename "$dir")"
 done
+shopt -u nullglob
 
 echo "All done."
 
