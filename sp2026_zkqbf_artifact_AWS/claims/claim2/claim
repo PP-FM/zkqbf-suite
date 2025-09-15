@@ -15,3 +15,5 @@ This means that the
 - Time-cost for Existential Reduction ("Ered") is ~57.0 seconds
 - Time-cost for Quantifier List Access ("Q-list-access") is ~2.2 seconds
 - Total time for the protocol is ("t") is ~541.5 seconds
+
+The middle line denotes the communication cost in bytes.

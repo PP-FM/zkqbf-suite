@@ -1,129 +1,118 @@
-Artifact Appendix: Towards Practical Zero-Knowledge Proof for PSPACE
+# Artifact Appendix: *Towards Practical Zero-Knowledge Proof for PSPACE*
 
-This repository contains the code and data artifact for the paper 
-"Towards Practical Zero-Knowledge Proof for PSPACE."
+This repository contains the code and data artifact for the paper **“Towards Practical Zero-Knowledge Proof for PSPACE.”**
 
-Our protocols implement two distinct approaches for proving knowledge 
-about quantified Boolean formulas (QBFs) in zero-knowledge:
+Our protocols implement two complementary approaches for proving knowledge about quantified Boolean formulas (QBFs) in zero-knowledge:
 
-- **ZKQRES**: a protocol based on validating quantified-resolution 
-  (Q-Res/Q-Cube-Res) proofs.
+- **ZKQRES** : validates quantified resolution proofs (Q-Res / Q-Cube-Res).
+- **ZKWS** : validates winning strategies (Skolem / Herbrand functions).
 
-- **ZKWS**  : a protocol based on validating winning strategies 
-  (Skolem/Herbrand functions).
+Both approaches enable efficient interactive zero-knowledge proofs for PSPACE-complete statements by privately verifying their corresponding certificates.
 
-Both approaches enable efficient zero-knowledge proofs for PSPACE-complete 
-statements through the privacy preserving verification of their certificates.
+## A.1 Description & Requirements
 
-----------------------------------------------------------------------
-A.1 Description & Requirements
+**Backends and dependencies**
 
-- The artifact is implemented using the EMP-toolkit as the backend 
-  for interactive zero-knowledge proofs, and integrates the open-source 
-  ZKUNSAT implementation.
+- **EMP-toolkit** as the interactive ZK backend.
+- **QBF solvers**
+  - **DepQBF** with **QRPcheck** (for Q-Res / Q-Cube-Res proofs)
+  - **CAQE-2** (for Skolem / Herbrand functions)
+- **Other tools**: **ABC**, **Aiger**, **Picosat**.
+- **Libraries**: **NTL** is heavily used.
 
-- QBF solvers employed: DepQBF with QRPcheck (for Q-Res/Q-Cube-Res proofs), 
-  and CAQE-2 (for Skolem/Herbrand functions).
+It is also worth noting that the open source **ZKUNSAT** implementation is central to our implementation (We build on top of ZKUNSAT).
 
-- Other tools employed: ABC, Aiger and Picosat. Our protocol also heavily
-  relies on the NTL library.
+**Benchmarks**
 
-- Benchmarks presented in this package are taken from the QBFEVAL'07 suite.
-  This is primarily because our experimental evaluation was majorly 
-  performed on this set of instances. (Results for real-world applications 
-  like Partial Equivalence Checking (PEC), Conformant Planning (C-PLAN),
-  and Black-Box Checking (BBC) can be found in the paper)
+- Benchmarks are taken from **QBFEVAL’07**, which we primarily used in our evaluation section on the paper.
+- Results on real-world applications (Partial Equivalence Checking (PEC), Conformant Planning (C-PLAN), Black-Box Checking(BBC)) appear in the paper.
 
-Hardware requirements:
-- The evaluation of the protocol was originally run on AWS i4i.16xlarge 
-  instances (64 vCPUs, 512 GB RAM, 50 Gbps inter-instance bandwidth). 
+**Hardware**
 
-- High-memory (> 64 GiB) machines are recommended to invoke these protocols. 
+- Original evaluation ran on **AWS i4i.16xlarge**  
+  (64 vCPUs, 512 GiB RAM, 50 Gbps inter-instance bandwidth).
+- We recommend **high-memory machines (≥ 64 GiB RAM)**.
 
-----------------------------------------------------------------------
-A.2 Instructions
+## A.2 Instructions
 
-The following are the instructions for the AE, or any future user to run
-this package on an AWS instance. You will see results similar to the ones
-presented in the paper if you have access to i4i.16xlarge instances 
-(64 vCPUs, 512 GB RAM, 50 Gbps inter-instance bandwidth).
+The steps below assume you are running on an AWS instance. You should see results comparable to those presented in the paper when using an **i4i.16xlarge** instance.  
+**Total expected time:** ~**3 h 30 min** (details per step/claim below).
 
-Expected Time: 3 hours 30 mins. Please find the specific breakdown below:
+### 1) Access the AWS instance
 
-**1. Please find log into the AWS instance that we have provided in the 
-     infrastructure directory of this package.
+Find the private key and IP address in the repository’s `infrastructure/` directory, then connect:
 
-     You can do this by running:
+```bash
+ssh -i <private-key-path> ubuntu@<IP-address>
+```
 
-     ssh -i <private-key-path> ubunut@<IP-address>
+If you encounter access issues, please reach out to us.  
+**Time:** < 5 minutes
 
-     from the terminal. If you have any issues with accessing the instance,
-     please reach out to us.
+### 2) Upload the package to the instance
 
-     **Time: <5 minutes**
+From your local machine, upload the entire folder (including `install.sh` and `claims/`) to the instance:
 
-**2. To run use this package, we recommend uploading this folder (including
-     "install.sh" and "claims") onto the AWS instance. This can be done 
-     with the following command on your local machine:
+```bash
+rsync -chvazP -e "ssh -i <private-key-path>" <path-to-this-package> ubuntu@<IP-address>:~/.
+```
 
-     rsync -chvazP -e "ssh -i <private-key-path>" <path-to-this-package> ubuntu@<IP-address>:~/.
+**Time:** < 1 minute
 
-     **Time: <1 minute** 
+### 3) Install and set up dependencies
 
-**3. You should now be able to see the package on the AWS instance. To setup 
-     the instance to run our protocols, first run:
+On the AWS instance:
 
-     cd <package>
-     ./install.sh
+```bash
+cd <package>
+chmod +x install.sh
+./install.sh
+```
 
-     This should install all the dependencies, clone our repo, compile and 
-     prepare the artifact for use on the AWS instance.
+This installs all dependencies, clones our repository, compiles components, and prepares the artifact.  
+It is normal to see many warnings during this step.  
+**Time:** ~15 minutes
 
-     Note: It is normal to see a lot of warnings while running this step.
+### 4) Verify the claims
 
-     **Time: 15 minutes** (install.sh will run for ~15 minutes)
+We provide **8 claims**:
 
-**4. Verifying our claims:
+- **Claims 1-4**: take a QBF in **QDIMACS** format (PCNF), generate the required intermediates (QRP proofs, Herbrand/Skolem functions, Picosat proofs, etc.), and run the protocol. Claim 1 and Claim 3 are False instances verified by ZKQRES and ZKWS, respectively; Claim 2 and Claim 4 are True instances verified by ZKQRES and ZKWS, respectively.
+- **Claims 5-8**: reproduce the **trends** shown in the paper. 
 
-     We have provided 8 claims, the first four claims take as input a 
-     QBF formula in QDIMACS format, prepare all necessary intermediate 
-     files (QRP proofs/Herbrand functions/Skolem functions/picosat proofs/
-     intermediate files to run protocol)
+Since the paper’s figures were produced on different hardware, exact numbers may vary. For the AWS setup here, see per-claim expected outputs in `claim{1..8}/expected`.
 
-**1. Using Preprocessed Proofs**
-- The folder `preprocessed_proof/` contains `.prf.unfold` files 
-  for selected QBF instances.
-- For *True instances*: switch to branches `zkherbrand-validation` or `zkqcube`.
-- For *False instances*: switch to branches `zksklom-validation` or `zkqrp`.
-- Install the required tools to specified directory via running install.sh in advance
-- Running the protocol via run.sh, which requires only the selected `.prf.unfold` file.
+**How to run a claim** (from `claims/claim<i>`):
 
-**2. Using Raw QBF Instances**
-- Install additional solvers and preprocessors:
-- The installation script for additional tools is install_raw.sh
-- Running the protocol via run_raw.sh, which requires only the selected .qdimacs file.
+```bash
+./run.sh <zkqbf-suite-dir-path>
+```
 
+- **Claims 1–4** write `result.txt` in `claim<i>/`.
+- **Claims 5–8** write plots to `claim<i>/plots/`.
 
-This generates properly formatted certificates compatible with our protocols.
+**Expected per-claim runtime**
 
-**3. AWS VM Access**
-- A preconfigured AWS virtual machine is available for evaluation.
-- To request SSH access, please send an email to hengyu2@illinois.edu 
-with subject line beginning with: `[SP 2026 AEC]`.
+- Claim 1: ~15 minutes  
+- Claim 2: ~10 minutes  
+- Claim 3: ~ 8 minutes  
+- Claim 4: ~ 8 minutes  
+- Claim 5: ~35 minutes  
+- Claim 6: ~25 minutes  
+- Claim 7: ~30 minutes  
+- Claim 8: ~10 minutes
 
-----------------------------------------------------------------------
-A.3 Benchmarks & Reproduction of Results
+**Total across all claims:**                             ~ **141 minutes**
 
-- **QBFEVAL**: Out of 351 instances, ZKQRES verified 341 within ~1 hour; 
-~75% were verified within 100 seconds. ZKWS verified 298 out of 322 
-Herbrand instances within half an hour.
-- **Real-world applications**: PEC, C-PLAN, and BBC instances were encoded 
-as QBFs and successfully verified. Verification times ranged from ~200s 
-(BBC) to ~1200s (C-PLAN).
-- Optimizations: The implementation uses batching and hierarchical 
-clause encoding to reduce runtime by ~50%.
+**Estimate time for AE to check the files and compare:** ~  **45 minutes**
 
-This artifact enables reproduction of all the experiments described in 
-Section 6 of the paper, and we separated them into 2 folders, one contains the smaller instances can be fully reproduced and some larger instances will take more that 3 hours to run and might run out of the memory.
+> **Important (Disk Usage):**  
+> Proofs for PSPACE-complete and co-NP-complete problems can be large.  
+> After inspecting outputs for **Claims 1–4**, we recommend deleting intermediate directories at `claim<i>/<intermediate_files>/`.  
+> For **Claims 5–6**, consider removing `claim<i>/benchmark/` after you finish.
 
-Also, we are providing the plotting function to reproduce our evaluation diagram in section 6.
+If you would like to run any protocol on a QDIMACS file of your choice, you can replace the file in the benchmark directory of one of the claim directories (claim1–claim4), depending on the protocol you wish to test. Note that the file structure must be `claim<i>/benchmark/<subdir>/<formula.qdimacs>` (benchmark should only contain one sub-directory).
+
+## A.3 A Note on the Benchmarks Presented
+
+The benchmarks presented in this package are selected to be sparse in their proof sizes and ZKQRES/ZKWS protocol runtime. We do not provide all the benchmarks due to total runtime, disk-space and RAM considerations.
