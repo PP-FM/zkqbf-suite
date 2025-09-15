@@ -50,4 +50,4 @@ echo "All done."
 
 mkdir -p plots
 
-$1/.venv/bin/python3 $ZKQRES_DIR/plot_qres.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim5/benchmark/benchmarks_qrp_every5ish/False --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim5/plots
+$1/.venv/bin/python3 $ZKQRES_DIR/plot_qres.py --root $BENCH_DIR --out ./plots

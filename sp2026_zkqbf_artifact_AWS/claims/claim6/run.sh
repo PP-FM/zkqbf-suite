@@ -58,4 +58,4 @@ echo "All done."
 
 mkdir -p plots
 
-$1/.venv/bin/python $ZKQRES_DIR/plot_qcube.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim6/benchmark/benchmarks_qcube/True --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim6/plots
+$1/.venv/bin/python $ZKQRES_DIR/plot_qcube.py --root $BENCH_DIR --out ./plots
