@@ -1,2 +1,17 @@
 Claim: A ZK Protocol for verifying False QBFs through the validation of 
        private Q-Resolution proofs.
+
+
+How to read result.txt:
+The last 3 lines in the file should look something like -
+a 231.685 q-res 75.6116 i 12.8087 Ared 295.84 Q-list-access: 43.8245 t 659.769
+communication:3851639349
+----end----
+
+This means that the 
+- Access time-cost ("a") is ~231.685 seconds
+- Time-cost for Q-Resolution ("q-res") is ~75.6 seconds
+- Time-cost for input ("i") is ~12.8
+- Time-cost for Universal Reduction ("Ared") is ~295.8 seconds
+- Time-cost for Quantifier List Access ("Q-list-access") is ~43.8 seconds
+- Total time for the protocol is ("t") is 659.7 seconds
