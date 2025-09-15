@@ -11,23 +11,23 @@ connected
 ----set up----
 
 ----QBF matrix----
-number of forall variables: 490
-number of existential variables: 40522
-number of clauses: 114758
+number of forall variables: 4
+number of existential variables: 846
+number of clauses: 2559
 
-Variable representing true: 41641
+Variable representing true: 1623
 
-/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim3/benchmark/False/biu.mv.xl_ao.bb-b003-p020-IPF01-c05.blif-biu.inv.prop.bb-bmc.with-IOC.unfold-010/biu.mv.xl_ao.bb-b003-p020-IPF01-c05.blif-biu.inv.prop.bb-bmc.with-IOC.unfold-010_renamed.zkherb
+/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim3/benchmark/False/c4_BMC_p2_k32/c4_BMC_p2_k32_renamed.zkherb
 ----Herbrand Function----
-number of input variables: 40522
-number of output variables: 490
-number of and gates: 1118
+number of input variables: 846
+number of output variables: 4
+number of and gates: 776
 
-/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim3/benchmark/False/biu.mv.xl_ao.bb-b003-p020-IPF01-c05.blif-biu.inv.prop.bb-bmc.with-IOC.unfold-010/biu.mv.xl_ao.bb-b003-p020-IPF01-c05.blif-biu.inv.prop.bb-bmc.with-IOC.unfold-010_renamed.prf.unfold
+/home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim3/benchmark/False/c4_BMC_p2_k32/c4_BMC_p2_k32_renamed.prf.unfold
 ----input proof----
-number of resolution steps: 21060
-total number of clauses: 139172
-DEGREE for ZKUNSAT: 25
+number of resolution steps: 36778
+total number of clauses: 41665
+DEGREE for ZKUNSAT: 139
 
 ----end set up----
 
@@ -42,17 +42,16 @@ DEGREE for ZKUNSAT: 25
 [========================================================>             ] 80 %
 [===============================================================>      ] 90 %
 finish  input!
-[============================================================>         ] 86 %
-[=============================================================>        ] 87 %
-[==============================================================>       ] 89 %
-[===============================================================>      ] 90 %
-[================================================================>     ] 92 %
-[=================================================================>    ] 93 %
-[==================================================================>   ] 95 %
-[===================================================================>  ] 96 %
-[====================================================================> ] 98 %
-[=====================================================================>] 99 %
-a 123.05 r 6.04662 i 13.1087 t 181.553
-herbrand function checking time 39.3012
-communication:3383130114
+[==============>                                                       ] 20 %
+[====================>                                                 ] 29 %
+[==========================>                                           ] 38 %
+[================================>                                     ] 47 %
+[=======================================>                              ] 55 %
+[=============================================>                        ] 64 %
+[===================================================>                  ] 73 %
+[=========================================================>            ] 82 %
+[===============================================================>      ] 91 %
+a 332.825 r 70.1292 i 20.2054 t 426.568
+herbrand function checking time 3.26262
+communication:2664239762
 ----end----
