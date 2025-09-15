@@ -65,4 +65,4 @@ echo "All done."
 
 mkdir -p plots
 
-$1/.venv/bin/python3 $ZKQBF_DIR/plot_skolem.py --root /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/benchmark/benchmarks_skolem/True --out /home/ubuntu/zkqbf-suite/sp2026_zkqbf_artifact_AWS/claims/claim8/plots
+$1/.venv/bin/python3 $ZKQBF_DIR/plot_skolem.py --root $INPUT_DIR --out ./plots
