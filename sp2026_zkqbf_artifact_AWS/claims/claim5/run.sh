@@ -11,6 +11,9 @@ TEST_BIN="$ZKQRES_DIR/test"
 PORT=8000
 IP=127.0.0.1
 
+[[ -x "$TEST_BIN" ]] || { echo "Executable not found: $TEST_BIN" >&2; exit 1; }
+[[ -d "$BENCH_DIR" ]] || { echo "Input dir not found: $BENCH_DIR. Unzipping" >&2; tar -xf "./benchmark/benchmarks_qrp_every5ish.tar.xz" -C "./benchmark/"; }
+
 shopt -s nullglob
 for dir in "$BENCH_DIR"/*/; do
   zkqrp="$(find "$dir" -maxdepth 1 -type f -name '*_renamed.zkqrp' | head -n 1 || true)"
