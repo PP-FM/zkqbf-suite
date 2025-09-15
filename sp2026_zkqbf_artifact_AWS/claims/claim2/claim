@@ -1,2 +1,17 @@
-Claim: A ZK Protocol for verifying True QBFs through the validation of 
+Claim: A practical ZK Protocol for verifying True QBFs through the validation of 
        private Q-Cube Resolution proofs.
+
+How to read result.txt:
+The last 3 lines in the file should look something like -
+a 6.98913 init-cube-validity 452.817 cube-res 5.14514 i 17.2802 Ered 57.0447 Q-list-access: 2.29839 t 541.574
+communication:95667000
+----end----
+
+This means that the 
+- Access time-cost ("a") is ~6.9 seconds
+- Time-cost for checking initial-cube-validity ("init-cube-validity") is ~ 452.8 seconds
+- Time-cost for Q-Cube-Resolution ("cube-res") is ~5.1 seconds
+- Time-cost for input ("i") is ~17.2
+- Time-cost for Existential Reduction ("Ered") is ~57.0 seconds
+- Time-cost for Quantifier List Access ("Q-list-access") is ~2.2 seconds
+- Total time for the protocol is ("t") is ~541.5 seconds

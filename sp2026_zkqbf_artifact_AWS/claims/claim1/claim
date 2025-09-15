@@ -1,4 +1,4 @@
-Claim: A ZK Protocol for verifying False QBFs through the validation of 
+Claim: A practical ZK Protocol for verifying False QBFs through the validation of 
        private Q-Resolution proofs.
 
 
@@ -15,3 +15,5 @@ This means that the
 - Time-cost for Universal Reduction ("Ared") is ~295.8 seconds
 - Time-cost for Quantifier List Access ("Q-list-access") is ~43.8 seconds
 - Total time for the protocol is ("t") is 659.7 seconds
+
+The middle line denotes the communication cost in bytes.

@@ -1,2 +1,18 @@
-Claim: A ZK Protocol for verifying False QBFs through the validation of 
-       private Herbrand functions.
+Claim: A practical ZK Protocol for verifying False QBFs through the validation of 
+       private Herbrand Functions.
+
+How to read result.txt:
+The last 4 lines in the file should look something like -
+a 332.825 r 70.1292 i 20.2054 t 426.568
+herbrand function checking time 3.26262
+communication:2664239762
+----end----
+
+This means that the 
+- Access time-cost ("a") is ~332.8 seconds
+- Time-cost for Boolean Resolution ("r") is ~70.1 seconds
+- Time-cost for input ("i") is ~20.2
+- Time-cost for Checking the derivation of private portion of the input formula from a valid herbrand function ("herbrand function checking time") is ~3.2 seconds
+- Total time for the protocol is ("t") is ~426.5 seconds
+
+The communication cost for the protocol is ~2664239762 bytes (second to last line)

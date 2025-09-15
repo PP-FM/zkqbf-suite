@@ -1,1 +1,1 @@
-Claim: Efficiency of ZKQCUBE
+Trends for ZKQCUBE: We claim that zkqcube demonstrates practical end-to-end QBF verification in zero-knowledge, evaluators can confirm the performance trends by running our selected subset of benchmarks and observing the dependence on formula size and and the cert structure, they can also reproduce Figure 20 in the original paper.

@@ -1,1 +1,2 @@
-Claim: Efficiency of ZKWS (Herbrand Validation)
+Trends for ZKWS-Herbrand: We claim that zkws-herbrand efficiently verifies Herbrand functions (Winning strategies for False QBFs) in zero-knowledge.
+Selected benchmark instances demonstrate successful verification of Herbrand functions with very efficient proving time, with communication cost scaling linearly in clause count × width. Evaluators can reproduce these results to observe the clear trend of efficiency, and we provided plotting script to reproduce Figure 13 in paper.

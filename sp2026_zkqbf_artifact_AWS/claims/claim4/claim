@@ -1,2 +1,18 @@
-Claim: A ZK Protocol for verifying False QBFs through the validation of 
-       private Skolem functions.
+Claim: A practical ZK Protocol for verifying True QBFs through the validation of 
+       private Skolem Functions.
+
+How to read result.txt:
+The last 4 lines in the file should look something like -
+a 316.143 r 95.0711 i 33.2082 t 444.423
+skolem function checking time: 15.1427
+communication:1540255698
+----end----
+
+This means that the 
+- Access time-cost ("a") is ~316.1 seconds
+- Time-cost for Boolean Resolution ("r") is ~95.0 seconds
+- Time-cost for input ("i") is ~33.2
+- Time-cost for Checking the derivation of private portion of the input formula from a valid skolem function ("skolem function checking time") is ~15.1 seconds
+- Total time for the protocol is ("t") is ~444.4 seconds
+
+The communication cost for the protocol is ~1540255698 bytes (second to last line)

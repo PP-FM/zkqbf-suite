@@ -1,1 +1,2 @@
-Claim: Efficiency of ZK-QRES
+Trends for ZKQRES: We claim that zkqrp validates quantified resolution (Q-Res) proofs in zero-knowledge with efficiency comparable to certificate size.
+The selected instances will validate that out protocol can verify Q-Res proofs efficiently, and reproduce the same figure as in Figure 12, evaluators can observe that communication and prover time scale predictably with the product of proof size and width.

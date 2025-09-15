@@ -1,1 +1,2 @@
-Claim: Efficiency of ZKWS (Skolem Validation)
+Trends for ZKWS-Skolem: We claim that zkws-skolem efficiently validates Skolem functions (Winning strategies for True QBFs) in zero-knowledge.
+On satisfiable QBF instances, our protocol is reducing QBF satisfiability to propositional unsatisfiability. Evaluators can confirm from the selected benchmarks that prover time and communication cost follow the same scaling trend as in the Herbrand case, can also reproduce similar figure with Figure 13 in the paper.
