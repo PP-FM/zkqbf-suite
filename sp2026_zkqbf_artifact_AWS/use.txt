@@ -6,3 +6,10 @@ This package present the following 4 interactive ZK protocols:
 4)  ZKQCUBE
 
 These protocols are intended to prove the truth value of QBFs while keeping their proofs private. 
+
+
+The artifact is not suitable for:
+
+Running on low-resource environments (e.g., low RAM (< 64GB) laptops or small VMs), since verification requires very large RAM and storage.
+General-purpose ZK applications outside PSPACE/QBF, as the implementation is tailored specifically to QBF encodings and associated certificates.
+Deployment in latency-sensitive or production cryptographic settings, as the focus is on research evaluation rather than optimized deployment.
