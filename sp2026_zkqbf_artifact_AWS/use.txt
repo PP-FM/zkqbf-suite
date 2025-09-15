@@ -5,5 +5,4 @@ This package present the following 4 interactive ZK protocols:
 3)  ZKWS-Skolem
 4)  ZKQCUBE
 
-These protocols are intended to prove the truth value of QBFs in a privacy 
-preserving manner. 
+These protocols are intended to prove the truth value of QBFs while keeping their proofs private. 
