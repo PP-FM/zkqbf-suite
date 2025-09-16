@@ -109,7 +109,7 @@ Since the paper’s figures were produced on different hardware, exact numbers m
 > **Important (Disk Usage):**  
 > Proofs for PSPACE-complete and co-NP-complete problems can be large.  
 > After inspecting outputs for **Claims 1-4**, we recommend deleting intermediate directories at `claim<i>/<intermediate_files>/`.  
-> For **Claims 5-8**, consider removing `claim<i>/benchmark/` after you finish.
+> For **Claims 5-8**, consider removing the directory in `claim<i>/benchmark/` after you finish.
 
 If you would like to run any protocol on a QDIMACS file of your choice, you can replace the file in the benchmark directory of one of the claim directories (claim1–claim4), depending on the protocol you wish to test. Note that the file structure must be `claim<i>/benchmark/<subdir>/<formula.qdimacs>` (benchmark should only contain one sub-directory).
 
