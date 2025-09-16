@@ -29,6 +29,8 @@ After installing pysat on .venv, for all future zkqcube preprocessing, ensure th
 This is already done in the prepare_for_aws.sh script (Do not run this unless you are setting this up on an
 AWS instance for the first time). 
 
+It is also worth noting that the open source **ZKUNSAT** implementation is central to our implementation (We build on top of ZKUNSAT).
+
 ## Intructions to run protocols
 
 In this section we will present multiple workflows for our protocol. 
