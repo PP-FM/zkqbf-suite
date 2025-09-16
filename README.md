@@ -63,7 +63,7 @@ mkdir -p data
 
 It is okay to skip venv activation if you are not using ZKQCUBE.
 
-**c) ZKWS-Herbrand Validation**: To perform a ZKWS-Herbrand Validation (Only for false QBFs), from the zkqbf-suite directory, run
+**b) ZKWS-Herbrand Validation**: To perform a ZKWS-Herbrand Validation (Only for false QBFs), from the zkqbf-suite directory, run
 
 ```bash
 cd src/zkws-herbrand
@@ -74,12 +74,7 @@ mkdir -p data
 ./run_everything.sh "<bench_dir> <zkws-herbrand_dir> <caqe-2_dir> <abc_dir> <aiger_dir> <picosat_dir> <port_number> <IP_address>"
 ```
 
-You can run 
-
-```bash
-pro
-
-where <port_number> and <IP_address> are to establish communication between prover and verifier.
-If you are running this locally (you are both prover and verifier), you can use <port_number>=8000 
-(or any other port that is free) and <IP_address>=127.0.0.1 (localhost).
+where `<port_number>` and `<IP_address>` are to establish communication between prover and verifier.
+If you are running this locally (you are both prover and verifier), you can use `<port_number>=8000` 
+(or any other port that is free) and `<IP_address>=127.0.0.1` (localhost).
 
