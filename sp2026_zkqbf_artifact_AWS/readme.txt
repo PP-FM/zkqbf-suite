@@ -31,7 +31,7 @@ It is also worth noting that the open source **ZKUNSAT** implementation is centr
 
 - Original evaluation ran on **AWS i4i.16xlarge**  
   (64 vCPUs, 512 GiB RAM).
-- We recommend **high-memory machines (≥ 64 GiB RAM)**.
+- We recommend **high-memory machines (>= 64 GiB RAM)**.
 
 ## A.2 Instructions
 
