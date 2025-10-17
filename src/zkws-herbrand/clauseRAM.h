@@ -296,7 +296,6 @@ public:
         vector_inn_prdt_bch4(val[0], mac[0], sorted_X, sorted_MAC, r);
         vector_inn_prdt_bch4(val[1], mac[1], check_X, check_MAC, r);
 
-        // TODO comparison
         if(party == ALICE) {
             io->send_data(mac, 2*sizeof(block));
             io->flush();

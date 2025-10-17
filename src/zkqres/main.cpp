@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
     }
 
     if (party == BOB) {
-        //TODO: BOB should read the input formula and verify that the literals_list and quantifiers list are correct.
+        // BOB should read the input formula and verify that the literals_list and quantifiers list are correct.
         io->recv_data(&nres, 4);
         io->recv_data(&ncls, 4);
         io->recv_data(&DEGREE, 4);

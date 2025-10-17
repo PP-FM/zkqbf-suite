@@ -330,8 +330,8 @@ int main(int argc, char **argv) {
                 inp2.poly.ConverseCheck(neginp2.poly);
 
                 // TODO: Check that these polynomials are unit polynomials
-                // TODO: Check that the lines i, i+1 and i+2 in the proof file are 
-                //       consistent with the skolem function.
+                // Check that the lines i, i+1 and i+2 in the proof file are 
+                // consistent with the skolem function.
                 clause first = formula->get(Integer(INDEX_SZ, i, PUBLIC));
                 clause second = formula->get(Integer(INDEX_SZ, i+1, PUBLIC));
                 clause third = formula->get(Integer(INDEX_SZ, i+2, PUBLIC));

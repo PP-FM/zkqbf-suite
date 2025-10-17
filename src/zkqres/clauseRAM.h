@@ -296,7 +296,6 @@ public:
         vector_inn_prdt_bch4(val[0], mac[0], sorted_X, sorted_MAC, r);
         vector_inn_prdt_bch4(val[1], mac[1], check_X, check_MAC, r);
 
-        // TODO comparison
         if(party == ALICE) {
             io->send_data(mac, 2*sizeof(block));
             io->flush();
@@ -366,7 +365,6 @@ inline void check_non_tautological_resolution(clause& a, clause& b, clause& pivo
 }
 
 inline void check_qres(clause& a, clause& b, clause& res, clause& pivot, clause& neg_pivot, int& degree) {
-    //TODO: Does this weakened resolution check work here? need to prove it remains sound as long as there are no tautologies
     int deg = a.literals.size();
     assert(deg == b.literals.size());
 
