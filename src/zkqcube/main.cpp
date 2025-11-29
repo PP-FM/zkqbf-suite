@@ -47,7 +47,6 @@ int main(int argc, char **argv) {
     cout << "----set up----" << endl;
 
     GF2X P;
-//    random(P, 128);
     SetCoeff(P, 128, 1);
     SetCoeff(P, 7, 1);
     SetCoeff(P, 2, 1);

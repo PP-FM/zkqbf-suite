@@ -186,7 +186,6 @@ public:
             gfmul(val, hash_block[i], &tmp);
             hash = hash ^ tmp;
         }
-//        uint64_t  h = _mm_extract_epi64(hash, 0);
         return Integer(128, hash, ALICE);
     }
 
@@ -391,13 +390,6 @@ inline pair<double, double> check_chain(vector<Integer>& indice, vector<uint64_t
     return pair<double, double>{cost_access, cost_resolve};
 
 }
-
-/**************************checking*************************************************/
-
-/**************************bottleneck*************************************************/
-
-
-
 
 
 

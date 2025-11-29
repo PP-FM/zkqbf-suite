@@ -466,7 +466,6 @@ inline pair<double, double> check_forall_reduction(clause& a, clause& reduced_a,
     int index_of_max_in_reduced_a = 0;
     for (int i = 0; i < Literals_superset_of_lits_in_reduced_a.size(); i++){
         Integer Index_of_this_lit = index_retriever_Integer&Literals_superset_of_lits_in_reduced_a[i];
-        //cout << "Index_of_this_lit: " << (block)(__uint128_t) Index_of_this_lit.reveal<uint64_t>(ALICE) << endl;
         if (!(max_in_reduced_a.geq(Index_of_this_lit).reveal())) {
             max2_in_reduced_a = max_in_reduced_a;
             max_in_reduced_a = Index_of_this_lit;
@@ -478,12 +477,6 @@ inline pair<double, double> check_forall_reduction(clause& a, clause& reduced_a,
     assert(quantifier_list->read(max_in_reduced_a).equal(Integer(4, 3, PUBLIC)).reveal());
     auto timer_3 = chrono::high_resolution_clock::now();
     cost_access += chrono::duration<double>(timer_3 - timer_2).count();
-
-    // cout << "min_in_removed: " << (block)(__uint128_t) min_in_removed.reveal<uint64_t>(ALICE) << endl;
-    // cout << "max_in_reduced_a: " << (block)(__uint128_t) max_in_reduced_a.reveal<uint64_t>(ALICE) << endl;
-    // cout << "max2_in_reduced_a: " << (block)(__uint128_t) max2_in_reduced_a.reveal<uint64_t>(ALICE) << endl;
-    
-    //assert min_in_removed > max2_in_reduced_a
     assert(!(max2_in_reduced_a.geq(min_in_removed)).reveal());
 
     //Assert that the literal with the max_in_reduced_a index is existentially quantified.

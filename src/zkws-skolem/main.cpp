@@ -44,7 +44,6 @@ int main(int argc, char **argv) {
     cout << endl << "----set up----" << endl << endl;
 
     GF2X P;
-//    random(P, 128);
     SetCoeff(P, 128, 1);
     SetCoeff(P, 7, 1);
     SetCoeff(P, 2, 1);
@@ -137,7 +136,6 @@ int main(int argc, char **argv) {
     cout << "DEGREE for ZKUNSAT: " << DEGREE << endl << endl;
     cout << "----end set up----" << endl << endl;
     cout << "----loading input----" << endl;
-    //if ( ncls > 524287) return 0; 
 
     double cost_input = 0;
     double cost_resolve = 0;
@@ -241,10 +239,6 @@ int main(int argc, char **argv) {
             padding(temp_variable, 3);
             clause temp_var_clause(temp_variable, 3);
             Integer index = Integer(INDEX_SZ, var_to_index[i+1], ALICE);
-            // The check below is probably not necessary because both parties know the size of 
-            // skolem_vars_CR = 1+num_ins+num_ands
-            // if (index.geq(Integer(INDEX_SZ, 1+num_ins+num_ands, PUBLIC)).reveal())
-            //     error("skolem function incorrect");
             temp_var_clause.poly.Equal(skolem_vars_CR->get(index).poly);
         }
     }
@@ -458,7 +452,6 @@ int main(int argc, char **argv) {
             }
         }
 
-        //cout<<s.size()<< " " << i << endl;
         assert(s.size() == p.size() +1);
         for (uint64_t index: s) {
             chain.push_back(Integer(INDEX_SZ, index, ALICE));

@@ -112,19 +112,10 @@ inline void pack(block& mac, const Integer& val, int size = VAL_SZ) {
 
 inline void multiply_const(block &val, block &mac,
                            const block& x, const block& m, const block& cst, int party) {
-                            
-    // cout << "=====before ==== \n";
-    // cout << (cst) << endl; 
-    //  cout << (x) << endl;     
-    // cout << (val) << endl;                       
     if(party == ALICE) {
-        gfmul(x, cst, &val);//   cout << mac << endl;
+        gfmul(x, cst, &val);
     }
     gfmul(m, cst, &mac);
-    // cout << "====after ===== \n";
-    // cout << (cst) << endl; 
-    // cout << (x) << endl;     
-    // cout << (val) << endl; 
  }
 
 /*
@@ -254,11 +245,8 @@ inline void padding(vector<uint64_t>& input, int deg, uint64_t pad = 0UL){
 
 inline void block2GF(GF2E& res, const block a ){
     GF2X raw;
-    //  cout <<(a) << endl;
     auto low = _mm_extract_epi64(a, 0);
     auto high = _mm_extract_epi64(a, 1);
-    // cout << low << endl;
-    //cout << high << endl;
 
     raw.SetMaxLength(128);
     for(int i = 0; i < 64; i++){
